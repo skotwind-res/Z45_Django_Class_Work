@@ -5,3 +5,4 @@ urlpatterns = [
     path('', index),
     path('cur_time/', cur_time),
 ]
+
