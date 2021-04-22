@@ -1,25 +1,44 @@
 <!DOCTYPE html>
-<html >
-    <head>
-        <meta charset="UTF-8">
-        <title> {% block title %}Главная{% endblock %} ::
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> {% block title %}Главная{% endblock %} ::
         Доска объявлений</title>
-    </head>
-    <body>
-      <header>
-          <h1>объявления</h1>
-      </header>
-      <nav>
-          <a href="{% url 'index' %}">Главная</a>
-          <a href="{% url 'add' %}">Добавить</a>
-          {% for rubric in rubrics %}
-          <a href= "{% url 'by_rubric' rubric.pk %}">
-          {{ rubric.name }}</a>
-          {% endfor %}
-      </nav>
-      <section>
-          {% block content %}
-          {% endblock %}
-      </section>
-    </body>
+    <style>header h1 {
+        font-size: 40pt;
+        text-transform: uppercase;
+        text-align: center;
+        background-image: url("bg.jpg");
+    }
+    nav {
+        font-size: 16pt;
+        width: 150px;
+        float: left;
+    }
+    nav a {
+        display: block;
+        margin: 10px 10px;
+    }
+    section {
+        margin-left: 170px;
+    }</style>
+</head>
+<body>
+<header>
+    <h1>объявления</h1>
+</header>
+<nav>
+    <a href="{% url 'index' %}">Главная</a>
+    <a href="{% url 'add' %}">Добавить</a>
+    {% for rubric in rubrics %}
+    <a href="{% url 'by_rubric' rubric.pk %}">
+        {{ rubric.name }}</a>
+    {% endfor %}
+</nav>
+<section>
+    {% block content %}
+    {% endblock %}
+</section>
+</body>
 </html>
